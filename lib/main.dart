@@ -16,7 +16,10 @@ class DQuebrada extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: RaoLogin(),
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark(
+        useMaterial3: true,
+
+      ),
 
     );
   }
