@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class RaoLogin extends StatefulWidget {
+  @override
+  State<RaoLogin> createState() => _RaoLoginState();
+}
 
-class RaoLogin extends StatelessWidget {
+class _RaoLoginState extends State<RaoLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +43,21 @@ class RaoLogin extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           TextFormField(
+                            cursorColor: Colors.green,
                             obscureText: false,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               labelText: 'Email Address',
+                              floatingLabelStyle:
+                                  TextStyle(color: Colors.yellow),
+
                               hintText: 'Your email...',
+
+                              hintStyle: TextStyle(color: Colors.lightGreen),
+                              //hint text style
+
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.lightGreen,
@@ -54,29 +66,34 @@ class RaoLogin extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               filled: true,
+
                               prefixIcon: Icon(
                                 Icons.email_outlined,
                               ),
                             ),
-                          ),
+                          ), //emailogin
                           const SizedBox(height: 20),
                           TextFormField(
-                            obscureText: false,
+                            cursorColor: Colors.green,
+                            obscureText: true,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              labelText: 'Email PassWord',
+                              labelText: 'Email Pa1ssWord',
+                              floatingLabelStyle:
+                                  TextStyle(color: Colors.yellow),
                               hintText: 'Your password...',
+                              hintStyle: TextStyle(color: Colors.lightGreen),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.lightGreen,
                                   width: 1,
                                 ),
-
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               filled: true,
+                              prefixIconColor: Colors.green,
                               prefixIcon: Icon(
                                 Icons.lock_outline,
                               ),
@@ -88,39 +105,46 @@ class RaoLogin extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 40),
-                          Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white, primary: Colors.green,
-                                shadowColor: Colors.greenAccent,
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(32.0)),
-                                minimumSize: Size(200, 50), //////// HERE
-                              ),
-                              onPressed: () {},
-                              child: Text('Come in'),
-                            )
+                          ), //password
 
-                          ),
-                          const SizedBox(height: 0),
-                          Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
+                          const SizedBox(height: 40),
+                          Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white, primary: Colors.lightGreen,
+                                  foregroundColor: Colors.white,
+                                  primary: Colors.green,
                                   shadowColor: Colors.greenAccent,
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(32.0)),
+                                      borderRadius:
+                                          BorderRadius.circular(32.0)),
+                                  minimumSize: Size(200, 50), //////// HERE
+                                ),
+                                onPressed: () {},
+                                child: Text('Come in'),
+                              )),
+                          const SizedBox(height: 0),
+                          Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  primary: Colors.lightGreen,
+                                  shadowColor: Colors.greenAccent,
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(32.0)),
                                   minimumSize: Size(200, 50), //////// HERE
                                 ),
                                 onPressed: () {},
                                 child: Text('Register Now!'),
-                              )
-
-                          ),
+                              )),
+                          const SizedBox(height: 40),
+                          // Generated code for this TextField Widget...
                         ],
                       ),
                     ),
