@@ -107,7 +107,7 @@ class _RaoLoginState extends State<RaoLogin> {
                             ),
                           ), //password
 
-                          const SizedBox(height: 40),
+                          const SizedBox(height: 20),
                           Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
@@ -125,7 +125,14 @@ class _RaoLoginState extends State<RaoLogin> {
                                 onPressed: () {},
                                 child: Text('Come in'),
                               )),
-                          const SizedBox(height: 0),
+
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 1),
+                            child: Text(
+                              'Don’t have an account yet? ',
+                            ),
+                          ),
+
                           Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
