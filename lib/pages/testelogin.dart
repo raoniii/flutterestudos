@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled1/pages/components/custompasswordfield.dart';
+import 'package:untitled1/pages/components/custontextfield.dart';
 
 class RaoLogin extends StatefulWidget {
   @override
@@ -7,6 +8,13 @@ class RaoLogin extends StatefulWidget {
 }
 
 class _RaoLoginState extends State<RaoLogin> {
+
+  final _formKey = GlobalKey<FormState>();
+  final _tEmail = TextEditingController();
+  final _tSenha = TextEditingController();
+  final _focusSenha = FocusNode();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,71 +50,9 @@ class _RaoLoginState extends State<RaoLogin> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          TextFormField(
-                            cursorColor: Colors.green,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              labelText: 'Email Address',
-                              floatingLabelStyle:
-                                  TextStyle(color: Colors.yellow),
-
-                              hintText: 'Your email...',
-
-                              hintStyle: TextStyle(color: Colors.lightGreen),
-                              //hint text style
-
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.lightGreen,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              filled: true,
-
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                              ),
-                            ),
-                          ), //emailogin
+                          CustomTextFormField(controller: _tEmail, labelText: 'Email Address',hintText: 'Your email...',prefixIconData: Icons.email_outlined),
                           const SizedBox(height: 20),
-                          TextFormField(
-                            cursorColor: Colors.green,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              labelText: 'Email Pa1ssWord',
-                              floatingLabelStyle:
-                                  TextStyle(color: Colors.yellow),
-                              hintText: 'Your password...',
-                              hintStyle: TextStyle(color: Colors.lightGreen),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.lightGreen,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              filled: true,
-                              prefixIconColor: Colors.green,
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                              ),
-                              suffixIcon: Align(
-                                widthFactor: 1.0,
-                                heightFactor: 1.0,
-                                child: Icon(
-                                  Icons.visibility_outlined,
-                                ),
-                              ),
-                            ),
-                          ), //password
-
+                          CustomPasswordField(controller: _tSenha, labelText: "Senha", hintText: "digite sua senha aqui"), //password
                           const SizedBox(height: 20),
                           Padding(
                               padding:
@@ -141,7 +87,7 @@ class _RaoLoginState extends State<RaoLogin> {
                                   foregroundColor: Colors.white,
                                   primary: Colors.lightGreen,
                                   shadowColor: Colors.greenAccent,
-                                  elevation: 3,
+                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(32.0)),
@@ -164,4 +110,38 @@ class _RaoLoginState extends State<RaoLogin> {
       ),
     );
   }
+
+  void _onClickLogin() {
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    String login = _tEmail.text;
+    String senha = _tSenha.text;
+
+    print("Login: $login, Senha: $senha");
+  }
+
+  String? _validateLogin(String text) {
+    if (text.isEmpty) {
+      return "Digite o login";
+    }
+    return null;
+  }
+
+  String? _validateSenha(String text) {
+    if (text.isEmpty) {
+      return "Digite a senha";
+    }
+    if (text.length < 3) {
+      return "A senha precisa ter pelo menos 3 números";
+    }
+    return null;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
 }

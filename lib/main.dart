@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/appbarbutton/myhomepage.dart';
+import 'package:untitled1/pages/homepage.dart';
 import 'package:untitled1/pages/loginpage.dart';
 import 'package:untitled1/pages/registerpage.dart';
 import 'package:untitled1/pages/testelogin.dart';
@@ -16,9 +17,9 @@ class DQuebrada extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: RaoLogin(),
-      theme: ThemeData.dark(
-        useMaterial3: true,
+      home: HomeScreen(),
+      theme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.light().copyWith(primary: Colors.black87),
 
       ),
 
