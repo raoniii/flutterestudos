@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -138,7 +137,6 @@ class RegisterPage extends StatelessWidget {
                                   color: Colors.lightGreen,
                                   width: 1,
                                 ),
-
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               filled: true,

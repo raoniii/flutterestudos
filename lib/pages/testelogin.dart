@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled1/pages/components/custompasswordfield.dart';
 import 'package:untitled1/pages/components/custontextfield.dart';
 
 class RaoLogin extends StatefulWidget {
@@ -8,12 +7,15 @@ class RaoLogin extends StatefulWidget {
 }
 
 class _RaoLoginState extends State<RaoLogin> {
-
   final _formKey = GlobalKey<FormState>();
   final _tEmail = TextEditingController();
   final _tSenha = TextEditingController();
   final _focusSenha = FocusNode();
 
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class _RaoLoginState extends State<RaoLogin> {
         title: Text("Hello Narnian!!!"),
       ),
       body: Form(
+        key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -50,17 +53,35 @@ class _RaoLoginState extends State<RaoLogin> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          CustomTextFormField(controller: _tEmail, labelText: 'Email Address',hintText: 'Your email...',prefixIconData: Icons.email_outlined),
+                          CustomTextFormField(
+                            controller: _tEmail,
+                            labelText: 'Email Addressss',
+                            hintText: 'Your email...',
+                            prefixIconData: Icons.email_outlined,
+                            validator: (String? string) {
+                              _validateSenha(string!);
+                            },
+                          ),
                           const SizedBox(height: 20),
-                          CustomPasswordField(controller: _tSenha, labelText: "Senha", hintText: "digite sua senha aqui"), //password
+                          CustomTextFormField(
+                            controller: _tSenha,
+                            obscureText: true,
+                            validator: (String? string) {
+                              _validateSenha(string!);
+                            },
+                            labelText: 'Senhas',
+                            hintText: 'digite sua senha aqui',
+                            prefixIconData: Icons.lock_outline,
+                          ),
+                          // CustomPasswordField(controller: _tSenha, labelText: "Senha", hintText: "digite sua senha aqui", nextFocus: _focusSenha,), //password
                           const SizedBox(height: 20),
                           Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
                               child: ElevatedButton(
+                                child: Text('Come in'),
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  primary: Colors.green,
                                   shadowColor: Colors.greenAccent,
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
@@ -68,8 +89,7 @@ class _RaoLoginState extends State<RaoLogin> {
                                           BorderRadius.circular(32.0)),
                                   minimumSize: Size(200, 50), //////// HERE
                                 ),
-                                onPressed: () {},
-                                child: Text('Come in'),
+                                onPressed: _onClickLogin,
                               )),
 
                           Padding(
@@ -83,20 +103,22 @@ class _RaoLoginState extends State<RaoLogin> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 2, 0, 20),
                               child: ElevatedButton(
+                                child: Text('Register Now!'),
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  primary: Colors.lightGreen,
                                   shadowColor: Colors.greenAccent,
-                                   elevation: 3,
+                                  elevation: 3,
+                                  splashFactory: InkRipple.splashFactory,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(32.0)),
                                   minimumSize: Size(200, 50), //////// HERE
                                 ),
                                 onPressed: () {},
-                                child: Text('Register Now!'),
                               )),
                           const SizedBox(height: 40),
+
+
                           // Generated code for this TextField Widget...
                         ],
                       ),
@@ -143,5 +165,4 @@ class _RaoLoginState extends State<RaoLogin> {
   void dispose() {
     super.dispose();
   }
-
 }
